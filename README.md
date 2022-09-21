@@ -7,5 +7,11 @@
 - **ABS** 
  →10問すべて解答する
 
-- **典型90問**
+- **practice90**
  →一旦は、★1~3 を解いていく。
+
+- **contest**
+ →AtCoder Beginner Contestの問題
+
+- **EDPC**
+ →Educational DP Contest の問題
