@@ -6,8 +6,15 @@
       "command": "/opt/rh/devtoolset-9/root/usr/bin/g++",
       "args": [
         "-fdiagnostics-color=always",
+        "-std=gnu++17",
         "-g",
         "-Wall",
+        "-Wextra",
+        "-Wshadow",
+        "-Wconversion",
+        "-Wfloat-equal",
+        "-ftrapv",
+        "-fstack-protector-all",
         "${file}",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}.out"
