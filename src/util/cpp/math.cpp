@@ -4,6 +4,26 @@ namespace {
   const double PI = 3.141592653589793;
 }
 
+ uint64_t calc_combination(
+  uint32_t n,
+  uint32_t k
+ )
+ {
+  // return nCk
+  double answer  = 1.0;
+
+  if (k > n / 2) k = n - k;
+
+  for (uint32_t i = 1; i <= k; i++) {
+    double divided = (double)(n - i + 1);
+    double divisor = (double)i;
+
+    answer *= divided / divisor;
+  }
+
+  return (uint64_t)answer;
+ }
+
 uint64_t calc_greatest_common_divisor(
   uint64_t x,
   uint64_t y 
