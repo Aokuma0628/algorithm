@@ -1,6 +1,19 @@
 {
   "tasks": [
     {
+      // TODO:タスク実行ではうまくいかないため、手動で実行する
+      "label": "stack max change",
+      "type": "shell",
+      "command": "ulimit",
+      "args": [
+        "-s",
+        "81920"
+      ],
+      "group": {
+        "isDefault": true,
+      },
+    },
+    {
       "type": "cppbuild",
       "label": "C/C++: g++ アクティブなファイルのビルド",
       "command": "/opt/rh/devtoolset-9/root/usr/bin/g++",
@@ -14,6 +27,7 @@
         "-Wconversion",
         "-Wfloat-equal",
         "-ftrapv",
+        "-fstack-usage",
         "-fstack-protector-all",
         "${file}",
         "-o",
