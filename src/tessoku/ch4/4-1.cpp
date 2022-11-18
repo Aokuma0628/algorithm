@@ -1,4 +1,4 @@
-// A15 チャレンジ問題
+// A16 動的計画法の基本
 
 #include <iostream>
 #include <cstdint>

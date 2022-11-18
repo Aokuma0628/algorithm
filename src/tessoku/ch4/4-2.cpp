@@ -1,4 +1,4 @@
-// A15 チャレンジ問題
+// A17 動的計画法の復元
 
 #include <iostream>
 #include <cstdint>
