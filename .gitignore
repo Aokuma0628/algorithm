@@ -52,7 +52,6 @@ Mkfile.old
 dkms.conf
 
 # custom
-*.xlsx
 node_modules
 *.js
 
