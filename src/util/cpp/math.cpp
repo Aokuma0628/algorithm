@@ -78,3 +78,24 @@ bool isPrime(
   }
   return true;
 }
+
+// aのb乗した数値をmで割った時の余りを計算する
+int64_t calc_power_remain(
+  int64_t a,
+  int64_t b,
+  int64_t m
+)
+{
+  int64_t p = a;
+  int64_t ans = 1;
+
+  for (int32_t i = 0; i < 30; i++) {
+    int32_t wari = (1 << i);
+
+    if (b & wari) ans = (ans * p) % m;
+
+    p = (p * p) % m;
+  }
+
+  return ans;
+}
