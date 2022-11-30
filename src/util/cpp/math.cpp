@@ -1,4 +1,5 @@
 #include <cstdint>
+#include <cmath>
 
 namespace {
   const double PI = 3.141592653589793;
@@ -64,4 +65,16 @@ double calc_radian_to_degree(
 )
 {
   return radian * 180.0 / PI;
+}
+
+bool isPrime(
+  int32_t x
+)
+{
+  int32_t sqrt = (int32_t)std::sqrt(x);
+
+  for (int32_t i = 2; i <= sqrt; i++) {
+    if (x % i == 0) return false;
+  }
+  return true;
 }
