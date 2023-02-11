@@ -15,20 +15,14 @@ using std::vector;
 
 int32_t main(void)
 {
-  int32_t n = 0;
-  int32_t cnt = 0;
+  std::string s;
 
-  cin >> n;
+  cin >> s;
 
-  for (int32_t i = 0; i < n; i++) {
-    std::string s;
-    cin >> s;
-    
-    if (s == "For") cnt++;
+  for (int32_t i = 0; i < s.length(); i++) {
+    if (s[i] == '0') cout << '1';
+    else cout << '0';
   }
-
-  if (cnt > (n / 2)) cout << "Yes" << endl;
-  else cout << "No" << endl;
 
   return 0;
 }

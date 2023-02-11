@@ -7,6 +7,8 @@
 #include <cmath>
 #include <iomanip>
 #include <cstring>
+#include <stack>
+#include <stack>
 
 using std::cout;
 using std::endl;
@@ -14,41 +16,64 @@ using std::cin;
 using std::vector;
 
 namespace {
-  const int32_t NUM_MAX = 1'000 + 4;
+  const int32_t NUM_MAX = 100 + 4;
 }
+
 
 int32_t main(void)
 {
   int32_t n = 0;
   int32_t m = 0;
-  int32_t sn[NUM_MAX] = { 0 };
-  int32_t tm[NUM_MAX] = { 0 };
-  int32_t ans = 0;
+  std::vector<int32_t> list[NUM_MAX];
+  int32_t ans[NUM_MAX] = { 0 };
+  int32_t idx = 0;
+  bool flg[NUM_MAX] = { 0 };
+  std::stack<int32_t> stack;
 
   cin >> n >> m;
 
-  for (int32_t i = 0; i < n; i++) {
-    std::string s;
-    cin >> s;
-    sn[i] = stoi(s, NULL, 10) % 1000;
-  }
-
   for (int32_t i = 0; i < m; i++) {
-    std::string t;
-    cin >> t;
-    tm[i] = stoi(t, NULL, 10);
+    int32_t a = 0;
+    cin >> a;
+
+    list[a].emplace_back(a+1);
+    list[a+1].emplace_back(a);
   }
 
-  for (int32_t i = 0; i < n; i++) {
-    for (int32_t j = 0; j < m; j++) {
-      if (sn[i] == tm[j]) {
-        ans++;
-        break;
+  stack.push(1);
+  flg[1] = true;
+
+  while (stack.top() <= n) {
+    bool can_next = false;
+    int32_t next = stack.top();
+
+    for (int32_t i = 0; i < (int32_t)list[next].size(); i++) {
+      int32_t tmp = list[next][i];
+      if (!flg[tmp]) {
+        stack.push(tmp);
+        flg[tmp] = true;
+        can_next = true;
       }
+    }
+
+    if (!can_next) {
+      int32_t next_num = stack.top() + 1;
+      while(stack.size()) {
+        int32_t num = stack.top();
+        stack.pop();
+        ans[idx] = num;
+        idx++;
+      }
+      stack.push(next_num);
+      flg[next_num] = true;
     }
   }
 
-  cout << ans << endl;
+  for (int32_t i = 0; i < n; i++) {
+    if (i >= 1) cout << " ";
+    cout << ans[i];
+  }
+
 
   return 0;
 }
